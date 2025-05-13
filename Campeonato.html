@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonato F1 - Temporada Actual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Tabla de Campeonato de Fórmula 1 (Temporada 2024)</h1>
+    <div id="loader" style="display:none;"></div>
+    <table class="campeonato-table">
+        <thead>
+            <tr>
+                <th>Posición</th>
+                <th>Piloto</th>
+                <th>Nacionalidad</th>
+                <th>Equipo</th>
+                <th>Puntos</th>
+                <th>Victorias</th>
+            </tr>
+        </thead>
+        <tbody id="campeonato-body">
+            <!-- Los datos se insertarán aquí -->
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', loadCampeonato);
+    function showLoaderCampeonato() {
+        const loader = document.getElementById('loader');
+        loader.style.display = 'block';
+        loader.innerHTML = '<p>Cargando campeonato...</p>';
+    }
+    function hideLoaderCampeonato() {
+        const loader = document.getElementById('loader');
+        loader.style.display = 'none';
+    }
+    async function loadCampeonato() {
+        showLoaderCampeonato();
+        try {
+            const response = await fetch('http://127.0.0.1:5002/api/campeonato');
+            if (!response.ok) throw new Error('No se pudo obtener la tabla de campeonato');
+            const tabla = await response.json();
+            const tbody = document.getElementById('campeonato-body');
+            tbody.innerHTML = '';
+            tabla.forEach(piloto => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${piloto.posicion}</td>
+                    <td>${piloto.nombre}</td>
+                    <td>${piloto.nacionalidad}</td>
+                    <td>${piloto.equipo}</td>
+                    <td>${piloto.puntos}</td>
+                    <td>${piloto.victorias}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        } catch (e) {
+            alert('Error al cargar la tabla de campeonato.');
+        } finally {
+            hideLoaderCampeonato();
+        }
+    }
+    </script>
+</body>
+</html>

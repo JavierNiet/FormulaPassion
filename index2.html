@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormulaPassion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagenes/Logo.png" type="image/png">
+    <meta name="description" content="FormulaPassion: Noticias, resultados y más sobre la Fórmula 1." />
+    <meta name="keywords" content="Fórmula 1, carreras, noticias, resultados, equipos" />
+    <meta name="author" content="FormulaPassion" />
+</head>
+<body>
+    <!-- Barra lateral -->
+    <div id="sidebar" class="sidebar">
+        <button class="closebtn" onclick="toggleSidebar()">×</button>
+         <a href="Carreras.html">Carreras Históricas</a>
+         <a href="Noticias.html">Noticias</a>
+         <a href="Campeonato.html">Campeonato</a>
+         <a href="resultados.html">Resultados</a>
+         
+       
+    </div>
+    <button class="openbtn" onclick="toggleSidebar()" aria-label="Abrir barra lateral">☰ Menú</button>
+
+    <header class="header" aria-label="Encabezado principal">
+        <div class="header-content">
+            <img class="image" src="imagenes/Logo.png" alt="Logo de FormulaPassion" />
+            <h1 style="text-align: center; flex: 1;">FormulaPassion</h1>
+        </div>
+    </header>
+
+    <section class="carousel">
+        <button class="prev" onclick="document.getElementById('carousel').scrollBy({ left: -300, behavior: 'smooth' })">←</button>
+        <div id="carousel" class="carousel-track">
+            <div  class="carousel-slide"><a href="https://shop.astonmartinf1.com/en/home/"><img src="imagenes/Aston Martin.png" alt="Aston Martin"></a></div>
+            <div class="carousel-slide"><a href="https://store.alpinef1.com/en"><img src="imagenes/Logo_of_alpine_f1_team_2022.png" alt="Alphine"></a></div>
+            <div class="carousel-slide"><a href="https://www.williamsf1.com/store"><img src="imagenes/Logo_Williams_F1 (1).png" alt="Williams"></a></div>
+            <div class="carousel-slide"><a href="https://f1store.formula1.com/es/haas-f1-team/t-21975490+z-9236924-3708324167"><img src="imagenes/hass (2).png" alt="Hass"></a></div>
+            <div class="carousel-slide"><a href="https://www.redbullshop.com/en-int/rb-racing/"><img src="imagenes/Red Bull.png" alt="Red Bull"></a></div>
+            <div class="carousel-slide"><a href="https://www.mclarenstore.com/"><img src="imagenes/Mclaren.png" alt="Mclaren"></a></div>
+            <div class="carousel-slide"><a href="https://shop-int.mercedesamgf1.com/"><img src="imagenes/mercedes (2).png" alt="Mercedes"></a></div>
+            <div class="carousel-slide"><a href="https://store.ferrari.com/es-es/"><img src="imagenes/pngwing.com (5).png" alt="Ferrari"></a></div>
+            <div class="carousel-slide"><a href="https://f1store4.formula1.com/es/rb/t-10421088+z-9325350-950311027"><img src="imagenes/Racing Bull (2).png" alt="Racing Bull"></a></div>
+            <div class="carousel-slide"><a href="https://f1store4.formula1.com/es/kick-sauber/t-10424252+z-9577029-3404546687"><img src="imagenes/Stake_F1_Team_logo.png" alt="Sauber"></a></div>
+        </div>
+        <button class="next" onclick="document.getElementById('carousel').scrollBy({ left: 300, behavior: 'smooth' })">→</button>
+    </section>
+
+    <section id="next-race-section" style="text-align:center; margin: 30px 0;">
+        <h2>Próxima carrera de Fórmula 1</h2>
+        <div id="next-race-info">
+            <p>Cargando información de la próxima carrera...</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 FormulaPassion. Todos los derechos reservados.</p>
+        <ul>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Términos de uso</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </footer>
+
+    <button id="toggle-theme" onclick="toggleTheme()">Cambiar Tema</button>
+    <button id="back-to-top" onclick="scrollToTop()"></button>
+
+    <!-- Chatbot IA Formula 1 -->
+    <div id="chatbot-container" style="position:fixed;bottom:30px;left:30px;z-index:9999;max-width:350px;width:100%;">
+      <div id="chatbot-header" style="background:#e10600;color:#fff;padding:10px 15px;border-radius:10px 10px 0 0;font-weight:bold;cursor:pointer;">Formula 1 IA Chat</div>
+      <div id="chatbot-body" style="background:#222;padding:10px;height:260px;overflow-y:auto;color:#fff;border-left:2px solid #e10600;border-right:2px solid #e10600;display:none;"></div>
+      <form id="chatbot-form" style="display:none;background:#222;border-radius:0 0 10px 10px;padding:10px 8px 8px 8px;border-left:2px solid #e10600;border-right:2px solid #e10600;border-bottom:2px solid #e10600;">
+        <input id="chatbot-input" type="text" placeholder="Pregunta sobre F1..." style="width:75%;padding:6px;border-radius:4px;border:none;outline:none;" required />
+        <button type="submit" style="background:#e10600;color:#fff;border:none;padding:6px 12px;border-radius:4px;font-weight:bold;">Enviar</button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

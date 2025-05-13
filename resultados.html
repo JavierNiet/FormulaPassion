@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Carreras F1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <img class="image" src="imagenes/Logo.png" alt="Logo de FormulaPassion" />
+            <h1 style="text-align: center; flex: 1;">Resultados de las Carreras 2025</h1>
+        </div>
+    </header>
+    <main>
+        <section id="race-results">
+            <table class="race-results-table" style="border-spacing: 15px; margin: 0 auto;">
+                <thead>
+                    <tr>
+                        <th>Gran Premio</th>
+                        <th>Fecha</th>
+                        <th>Ganador</th>
+                        <th>Equipo</th>
+                        <th>Dorsal</th>
+                    </tr>
+                </thead>
+                <tbody id="results-body">
+                    <!-- Los datos se llenarán dinámicamente desde la API -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+    async function loadRaceResults() {
+        const response = await fetch('http://127.0.0.1:5003/api/results');
+        const results = await response.json();
+        const resultsBody = document.getElementById('results-body');
+        resultsBody.innerHTML = '';
+        results.forEach(result => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${result.race}</td>
+                <td>${result.date}</td>
+                <td>${result.winner}</td>
+                <td>${result.equipo}</td>
+                <td>${result.dorsal}</td>
+            `;
+            resultsBody.appendChild(row);
+        });
+    }
+    loadRaceResults();
+    </script>
+</body>
+</html>
